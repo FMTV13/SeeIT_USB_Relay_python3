@@ -11,9 +11,9 @@ SET_CMD_MODE='Q'
 
 # Board ID to channel mapping
 board = {}
-board['\xad'] = 2
-board['\xab'] = 4
-board['\xac'] = 8
+board['ad'] = 2
+board['ab'] = 4
+board['ac'] = 8
 
 # serial interface
 
@@ -37,15 +37,15 @@ if __name__ == '__main__':
     fd=serial.Serial(dev, 9600)
 
     if relnum == 'start':
-        fd.write(GET_BOARD_ID)
+        fd.write(str.encode(GET_BOARD_ID))
         time.sleep(1)
 
         bid=os.read(fd.fileno(), 1)
 
         if bid:
-            print("Board id: " + ord(hex(bid)))
-            print("Board has " + str(board[bid]) + " channels.")
-            fd.write(SET_CMD_MODE)
+            print("Board id: " + str(bid.hex()))
+            print("Board has " + str(board[bid.hex()]) + " channels.")
+            fd.write(str.encode(SET_CMD_MODE))
             time.sleep(1)
         exit(0)
 

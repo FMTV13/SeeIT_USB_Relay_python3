@@ -1,10 +1,10 @@
 # Seeit USB Relay4/8 Python script
 ## Usage
 ```
-./command_relay.py /dev/ttyUSB[x] <start|relaynum|off> [relaynum]* ....
+python3 ./command_relay.py /dev/ttyUSB[x] <start|relaynum|off> [relaynum]* ....
 ```
 
-Tested on: Debian 4.19.16-1 (2019-01-17) x86_64 GNU/Linux
+Tested on: Ubuntu 20.04.6 LTS 4.19.16-1 (2024-05-28) x86_64 GNU/Linux
 
 ## Find serial interface
 ```
@@ -26,15 +26,15 @@ On Linux, for relay the driver pl230 is used.
 
 ## Commands
 ```
-$ ./command_relay.py /dev/ttyUSB2 start     # First thing to do when board is attached
-$ ./command_relay.py /dev/ttyUSB2 1         # Activate only relay 1
-$ ./command_relay.py /dev/ttyUSB2 1 4       # Activate relay 1 and 4
-$ ./command_relay.py /dev/ttyUSB2 off       # Set all relays off
+$ python3 ./command_relay.py /dev/ttyUSB2 start     # First thing to do when board is attached
+$ python3 ./command_relay.py /dev/ttyUSB2 1         # Activate only relay 1
+$ python3 ./command_relay.py /dev/ttyUSB2 1 4       # Activate relay 1 and 4
+$ python3 ./command_relay.py /dev/ttyUSB2 off       # Set all relays off
 ```
 
 ## Example session
 ```
-$ ./command_relay.py /dev/ttyUSB2 1
+$ python3 ./command_relay.py /dev/ttyUSB2 1
 0: relay is on, 1: relay is off.
 Least significant bit is smallest index
 (4 channel USB relay positions: 0b[4 3 2 1])
